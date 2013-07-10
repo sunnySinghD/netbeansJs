@@ -1,0 +1,50 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script type="text/javascript" src="js/libs/jquery-1.9.0/jquery.min.js"> </script>
+        <script type="text/javascript" src="js/libs/modernizr-2.6.2/modernizr.min.js"> </script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <link rel="stylesheet" href="css/main.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body onload="loadIndex()">
+        
+        <header class="navbar">
+            <a href="view.html" onclick="gotoView();"> View </a>
+        </header>
+        
+        <div class="toolbar">
+            <button id="createButton" type="button" onclick="DisplayCreatePanel();"> Create </button>
+ 
+            <div class="displayPanel" hidden="hidden">
+                <label for="type"> Type: </label>
+                <select id="type">
+                    <option>bool</option> 
+                    <option>text</option> 
+                </select>
+                 <label for="label"> Label: </label>
+                <input id="label"> 
+                <label for="value"> Value: </label>
+                <input id="value">
+                <button id ="addButton" class="create" type="button" onclick="finishedCreate();"> Add </button>
+                <!-- saveEditButton is set to visible when editing, its event handler is registered in a jquery function -->
+                <button id ="saveEditButton" class="edit" type="button"> Save </button>
+                <button type="button" onclick="HideCreatePanel();"> Cancel </button>  
+            </div>
+
+            <div class="editPanel" hidden>
+                <button id="editButton" class="edit" type="button">Edit</button>
+                <button id="removeButton" class="edit" type="button" onclick="removeClicked();">Remove</button>
+            </div>
+
+        </div>
+        <div class ="data">
+            <ol id="elementlist"></ol>
+        </div>
+    </body>
+</html>

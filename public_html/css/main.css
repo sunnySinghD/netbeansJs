@@ -1,0 +1,48 @@
+/* 
+    Document   : main
+    Created on : Jun 27, 2013, 9:58:58 AM
+    Author     : sunman
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.navbar {
+    padding: 5px;
+    border: 1px dashed black;
+}
+
+.toolbar {
+    padding: 10px;
+    border: 1px dashed blue;
+}
+
+.data {
+    padding: 10px;
+    border: 1px dashed black;
+}
+#elementlist li {
+    background-color : #fff;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#elementlist li:hover {
+    background-color : #f2f2f2;
+}
+
+#elementlist li.highlight, #elementlist li.highlight:hover {
+    background-color : #f2d2d2;
+    border: 1px dashed red;
+}
+
+div.highlight {
+    visibility: visible;
+}
