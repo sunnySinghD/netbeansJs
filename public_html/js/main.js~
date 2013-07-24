@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 function Element(label, type, value, id){
     this.Label = label !== null ? label : "No label";
     this.Type = type !== null ? type : "No type";
@@ -31,13 +30,10 @@ Element.prototype.setValue = function(value){
         switch(this.Type.toLowerCase()){
             // for a boolean set the value of the element to a boolean
             case("bool"): 
-                if (typeof value === "string" && value.toLowerCase() === "true"){ 
+                if (value.toLowerCase() === "true"){ 
                     trueValue = true;
                 }
-                else if (typeof value === "boolean"){
-                    trueValue = value;
-                }
-                else {
+                else{
                     trueValue = false;
                 }
                 break;
@@ -301,7 +297,11 @@ function saveAll(){
         var currentElement = ElementList.First;
 
         while(currentElement !== null){
-	    localStorage[index++] = JSON.stringify({Label:currentElement.Label, Type:currentElement.Type, Value:currentElement.Value});
+	    localStorage[index] = {Label:currentElement.Label, Type:currentElement.Type, Value:currentElement.Value};
+            localStorage[index + "Label"] = currentElement.Label;
+            localStorage[index + "Type"] = currentElement.Type;
+            localStorage[index + "Value"] = currentElement.Value;
+            index++;
             currentElement = currentElement.Next;
         }
     }
@@ -316,10 +316,8 @@ function loadAll(){
         
         // read in elements based on Size
         var count = localStorage["Size"];
-        var currentElement;
         for (; count > 0; count--){
-            currentElement = JSON.parse(localStorage[index]);
-            AddElementToDisplayList(ElementList.addElement(currentElement.Label, currentElement.Type, currentElement.Value));
+            AddElementToDisplayList(ElementList.addElement(localStorage[index + "Label"], localStorage[index + "Type"], localStorage[index + "Value"]));
             index++;
         }
     }
